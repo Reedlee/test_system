@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20160220062046) do
   add_index "questions", ["test_id"], name: "index_questions_on_test_id"
 
   create_table "results", force: :cascade do |t|
+    t.string   "test"
     t.string   "st_name"
     t.string   "st_surname"
     t.string   "st_group"

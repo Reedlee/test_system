@@ -1,4 +1,4 @@
-<%= form_for :result, url: send_result_path, html: {class: 'form-horizontal'} do |f| %>
+<%= form_for @result, url: send_result_path, html: {class: 'form-horizontal'} do |f| %>
     <div class="page-header">
       <h1>
         <%= f.text_field :test, value: @test.name, :disabled => true, class: 'form-control'  %>
