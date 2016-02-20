@@ -1,2 +1,29 @@
-<h1>Questions#show</h1>
-<p>Find me in app/views/questions/show.html.erb</p>
+<div class="page-header">
+  <%= link_to 'Tests', tests_path %> > <%=link_to @question.test.name, test_path(@question.test) %> > Question answers
+
+  <h1>Questions: </h1>
+  <h1>Answers:</h1>
+  <%= link_to 'New answer', new_test_question_answer_path(@question.test, @question), class: 'btn btn-default btn-lg' %>
+</div>
+
+<table class="table table-bordered">
+  <tr>
+    <td>#</td>
+    <td>Answers</td>
+    <td>Is correct</td>
+    <td>Actions</td>
+  </tr>
+
+  <% @answers.each_with_index do|answer, index|%>
+      <tr>
+        <td><%= index %></td>
+        <td><%= answer.text %></td>
+        <td><%= link_to question.answers.count, test_question_answers_path(@question.test, @question, answer)  %></td>
+        <td>
+          <%= link_to 'Edit,', edit_test_question_answer_path(@question.test, @question, answer)  %>
+          <%=link_to 'Remove', test_question_answer_path(@question.test, @question, answer), method: :delete %>
+        </td>
+        </td>
+      </tr>
+  <% end %>
+</table>
