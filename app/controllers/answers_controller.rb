@@ -30,6 +30,9 @@ class AnswersController < ApplicationController
   end
 
   def destroy
+    Answer.destroy(params[:id])
+    flash[:notice] = 'Ответ успешно удален!'
+    redirect_to :back
   end
 
   private
