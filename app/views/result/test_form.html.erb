@@ -1,0 +1,53 @@
+<%= form_for :result, url: send_result_path, html: {class: 'form-horizontal'} do |f| %>
+    <div class="page-header">
+      <h1>
+        <%= f.text_field :test, value: @test.name, :disabled => true, class: 'form-control'  %>
+      </h1>
+      <p>
+        <%= @test.description  %>
+      </p>
+    </div>
+    <hr>
+
+    <div class="col-sm-12">
+      <h2>Student information</h2>
+      <div class="form-group">
+        <%= f.label :st_name, 'First name' %>
+        <div class="col-sm-10">
+          <%= f.text_field :st_name, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :st_name, 'Last name' %>
+        <div class="col-sm-10">
+          <%= f.text_field :st_surname, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :st_group, 'Group' %>
+        <div class="col-sm-10">
+          <%= f.text_field :st_group, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <hr>
+
+    <%	@questions.each_with_index do |question,index|  %>
+        <div>
+          <b><%="Question #{index+1}: #{question.text}"%> </b>
+          <% question.answers.each_with_index do |answer, i|  %>
+              <div>
+                <%= radio_button_tag "question[answer[#{question.id}]]", "#{answer.id}"  %>
+                <%= label question.id, "#{i}) #{answer.text}" %>
+              </div>
+          <% end  %>
+        </div>
+    <%end %>
+    <hr>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= f.submit 'Finish test', class: 'btn btn-primary' %>
+      </div>
+    </div>
+<% end %>
