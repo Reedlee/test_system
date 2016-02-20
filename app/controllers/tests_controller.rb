@@ -23,9 +23,17 @@ class TestsController < ApplicationController
   end
 
   def edit
+    @test = Test.find(params[:id])
   end
 
   def update
+    @test = Test.find(params[:id])
+    if @test.update(test_params)
+      flash[:notice] = "Курс #{@test.name} успешно обновлен!"
+      redirect_to tests_path
+    else
+      render 'edit'
+    end
   end
 
   def destroy
