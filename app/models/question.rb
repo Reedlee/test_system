@@ -1,4 +1,4 @@
 class Question < ActiveRecord::Base
   belongs_to :test
-  has_many :results
+  has_many :answers
 end
