@@ -6,9 +6,21 @@ class AnswersController < ApplicationController
   end
 
   def new
+    @question = Question.find(params[:question_id])
+    @test = @question.test
+    @answer = @question.answers.build
   end
 
   def create
+    @test = Test.find(params[:test_id])
+    @question = Question.find(params[:question_id])
+    @answer = @question.answers.build(answer_params)
+    if @answer.save
+      flash[:notice] = "Ответ успешно создан!"
+      redirect_to test_question_path(@test, @question)
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -18,5 +30,10 @@ class AnswersController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+  def answer_params
+    params.require(:answer).permit(:text, :question_id, :correct)
   end
 end

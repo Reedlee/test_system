@@ -1,2 +1,11 @@
-<h1>Answers#new</h1>
-<p>Find me in app/views/answers/new.html.erb</p>
+<%= provide :button_text, 'Save' %>
+
+<div class="page-header">
+  <%= link_to 'Tests', tests_path %> >
+  <%= link_to @test.name, test_path(@test) %> >
+  <%= link_to 'Question answers', test_question_path(@test, @question) %> >
+  Create new answer
+  <h1>Create new answer</h1>
+</div>
+
+<%= render 'answers/form' %>
