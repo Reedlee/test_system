@@ -14,7 +14,7 @@
   <% @questions.each do|question|%>
       <tr>
         <td><%=  question.text %></td>
-        <td><%= link_to question.answers.count, test_question_answers_path(question.test, question)  %></td>
+        <td><%= link_to question.answers.count, test_question_path(question.test, question)  %></td>
         <td>
           <%= link_to 'Edit,', edit_test_question_path(question.test,question)  %>
           <%=link_to 'Remove', test_question_path(question.test, question), method: :delete %>
