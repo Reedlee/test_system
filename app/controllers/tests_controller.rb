@@ -29,6 +29,9 @@ class TestsController < ApplicationController
   end
 
   def destroy
+    Test.destroy(params[:id])
+    flash[:notice] = 'Тест успешно удален!'
+    redirect_to :back
   end
   private
   def test_params
