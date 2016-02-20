@@ -16,9 +16,9 @@
 
   <% @answers.each_with_index do|answer, index|%>
       <tr>
-        <td><%= index %></td>
+        <td><%= index + 1 %></td>
         <td><%= answer.text %></td>
-        <td><%= link_to question.answers.count, test_question_answers_path(@question.test, @question, answer)  %></td>
+        <td><%= radio_button_tag('','', answer.correct) %></td>
         <td>
           <%= link_to 'Edit,', edit_test_question_answer_path(@question.test, @question, answer)  %>
           <%=link_to 'Remove', test_question_answer_path(@question.test, @question, answer), method: :delete %>
