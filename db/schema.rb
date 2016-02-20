@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160220062448) do
+ActiveRecord::Schema.define(version: 20160220062046) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "text"
@@ -36,16 +36,10 @@ ActiveRecord::Schema.define(version: 20160220062448) do
     t.string   "st_name"
     t.string   "st_surname"
     t.string   "st_group"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "test_id"
-    t.integer  "question_id"
-    t.integer  "answer_id"
+    t.text     "report"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
-
-  add_index "results", ["answer_id"], name: "index_results_on_answer_id"
-  add_index "results", ["question_id"], name: "index_results_on_question_id"
-  add_index "results", ["test_id"], name: "index_results_on_test_id"
 
   create_table "tests", force: :cascade do |t|
     t.string   "name"
