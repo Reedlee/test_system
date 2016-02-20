@@ -5,4 +5,6 @@ Rails.application.routes.draw do
       resources :answers, except:[:index, :show]
     end
   end
+  get 'public/:id'=> 'result#test_form', as: :result
+  post 'public/:id'=> 'result#create_form', as: :send_result
 end
