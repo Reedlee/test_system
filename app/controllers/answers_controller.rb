@@ -1,10 +1,4 @@
 class AnswersController < ApplicationController
-  def index
-  end
-
-  def show
-  end
-
   def new
     @question = Question.find(params[:question_id])
     @test = @question.test
