@@ -1,2 +1,31 @@
-<h1>Tests#index</h1>
-<p>Find me in app/views/tests/index.html.erb</p>
+<div class="row">
+  <div class="col-md-4">
+    <h1>Tests</h1>
+  </div>
+  <div class="col-md-4 col-md-offset-4">
+    <%= link_to 'Create new test', new_test_path, class: 'btn btn-default btn-lg' %>
+  </div>
+</div>
+
+<table class="table table-bordered">
+  <tr>
+    <td>Name</td>
+    <td>Link</td>
+    <td>Questions</td>
+    <td>Results</td>
+    <td>Actions</td>
+  </tr>
+
+  <% @tests.each do|test|%>
+    <tr>
+      <td><%= link_to test.name, test_path(test)  %></td>
+      <td></td>
+      <td><%= link_to test.questions.count, test_path(test)  %></td>
+      <td><%= link_to test.questions.count, test_path(test)  %></td>
+      <td>
+        <%= link_to 'Edit', edit_test_path(test)  %></td>
+        <%=link_to 'Remove', test_path(test), method: :delete %>
+      </td>
+    </tr>
+  <% end %>
+</table>
