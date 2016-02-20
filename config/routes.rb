@@ -5,5 +5,4 @@ Rails.application.routes.draw do
       resources :answers, except:[:index, :show]
     end
   end
-  resources :test_results
 end
