@@ -30,6 +30,9 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
+    Question.destroy(params[:id])
+    flash[:notice] = 'Вопрос успешно удален!'
+    redirect_to :back
   end
   private
   def question_params
